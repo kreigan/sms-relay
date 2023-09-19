@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SMSRelay.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:SMSRelay.Views">
+
+    <Shell.Resources>
+        <Style TargetType="TabBar">
+            <Setter Property="Shell.TabBarBackgroundColor"
+                Value="BurlyWood" />
+            <Setter Property="Shell.TabBarTitleColor"
+                Value="Black" />
+            <Setter Property="Shell.TabBarUnselectedColor"
+                Value="Cornsilk" />
+        </Style>
+    </Shell.Resources>
+    
+    <TabBar>
+        <Tab Title="Message log">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:MessageLogView}"
+                Route="messagelog" />
+        </Tab>
+
+        <Tab Title="Settings">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:SettingsView}"
+                Route="settings" />
+        </Tab>
+    </TabBar>
+</Shell>
