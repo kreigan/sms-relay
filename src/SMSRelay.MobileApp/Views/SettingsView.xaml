@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SMSRelay.MobileApp.Views.SettingsView"
+             xmlns:viewmodels="clr-namespace:SMSRelay.MobileApp.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodels:SettingsViewModel"
+             Title="Settings">
+    <ContentPage.Resources>
+        <Style Class="SectionCaption" TargetType="Label">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="Margin" Value="0,0,0,20" />
+        </Style>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout Margin="10">
+        <Label Text="Remote receiver" StyleClass="SectionCaption" />
+        <StackLayout Margin="0,0,0,30">
+            <Entry Keyboard="Url"
+                    ClearButtonVisibility="WhileEditing"
+                    Placeholder="https://remote.receiver.server.com:1234"
+                    Text="{Binding RemoteRelayReceiverUri}">
+                <Entry.Behaviors>
+                    <toolkit:UriValidationBehavior
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                        ValidStyle="{StaticResource ValidEntryStyle}"
+                        Flags="ValidateOnValueChanged"
+                        UriKind="Absolute" />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Label Text="API key" />
+            <Entry ClearButtonVisibility="WhileEditing" Text="{Binding RemoteRelayReceiverApiKey}" />
+
+            <Label Text="API secret" />
+            <Entry ClearButtonVisibility="WhileEditing" Text="{Binding RemoteRelayReceiverApiSecret}" />
+        </StackLayout>
+
+        <Label Text="SIM configuration" StyleClass="SectionCaption" />
+        <HorizontalStackLayout Spacing="15" >
+            <Switch x:Name="sim1ForwardSwitch" IsToggled="{Binding Sim1Active, Mode=TwoWay}" />
+            <Label Text="Forward SIM 1" VerticalOptions="Center" />
+            <Entry x:Name="sim1PhoneNumber"
+                    Placeholder="Phone number"
+                    Keyboard="Telephone"
+                    WidthRequest="200"
+                    Text="{Binding Sim1PhoneNumber}" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Spacing="15" >
+            <Switch x:Name="sim2ForwardSwitch" IsToggled="{Binding Sim2Active, Mode=TwoWay}" />
+            <Label Text="Forward SIM 2" VerticalOptions="Center" />
+            <Entry x:Name="sim2PhoneNumber"
+                    Placeholder="Phone number"
+                    Keyboard="Telephone"
+                    WidthRequest="200"
+                    Text="{Binding Sim2PhoneNumber}" />
+        </HorizontalStackLayout>
+    </StackLayout>
+</ContentPage>

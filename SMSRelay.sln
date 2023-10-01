@@ -6,11 +6,18 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D1B7A3B1-67B6-48C4-AB0C-E1D60A23F568}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3BE59ABE-475B-41DD-A4B6-D1A4EE0C328D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMSRelay", "src\smsrelay\SMSRelay.csproj", "{3AC35FAF-DB58-48C9-B0BC-C85C1D440028}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMSRelay.Azure", "src\SMSRelay.Azure\SMSRelay.Azure.csproj", "{FD61E5D2-69C7-456C-BE34-EF1BF8A7C704}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMSRelay.Core", "src\SMSRelay.Core\SMSRelay.Core.csproj", "{1F25F68D-F0DA-48BC-A21F-11064B0DC275}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMSRelay.MobileApp", "src\SMSRelay.MobileApp\SMSRelay.MobileApp.csproj", "{9BD14569-9838-4E8C-B1DC-CDE6A1948319}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,18 +25,28 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3AC35FAF-DB58-48C9-B0BC-C85C1D440028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3AC35FAF-DB58-48C9-B0BC-C85C1D440028}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3AC35FAF-DB58-48C9-B0BC-C85C1D440028}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{3AC35FAF-DB58-48C9-B0BC-C85C1D440028}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3AC35FAF-DB58-48C9-B0BC-C85C1D440028}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3AC35FAF-DB58-48C9-B0BC-C85C1D440028}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FD61E5D2-69C7-456C-BE34-EF1BF8A7C704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD61E5D2-69C7-456C-BE34-EF1BF8A7C704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD61E5D2-69C7-456C-BE34-EF1BF8A7C704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD61E5D2-69C7-456C-BE34-EF1BF8A7C704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F25F68D-F0DA-48BC-A21F-11064B0DC275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F25F68D-F0DA-48BC-A21F-11064B0DC275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F25F68D-F0DA-48BC-A21F-11064B0DC275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F25F68D-F0DA-48BC-A21F-11064B0DC275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BD14569-9838-4E8C-B1DC-CDE6A1948319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BD14569-9838-4E8C-B1DC-CDE6A1948319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BD14569-9838-4E8C-B1DC-CDE6A1948319}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9BD14569-9838-4E8C-B1DC-CDE6A1948319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BD14569-9838-4E8C-B1DC-CDE6A1948319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BD14569-9838-4E8C-B1DC-CDE6A1948319}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3AC35FAF-DB58-48C9-B0BC-C85C1D440028} = {3BE59ABE-475B-41DD-A4B6-D1A4EE0C328D}
+		{FD61E5D2-69C7-456C-BE34-EF1BF8A7C704} = {3BE59ABE-475B-41DD-A4B6-D1A4EE0C328D}
+		{1F25F68D-F0DA-48BC-A21F-11064B0DC275} = {3BE59ABE-475B-41DD-A4B6-D1A4EE0C328D}
+		{9BD14569-9838-4E8C-B1DC-CDE6A1948319} = {3BE59ABE-475B-41DD-A4B6-D1A4EE0C328D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A5D09AF3-A8B7-4E30-AEE4-18E6824BFB7D}
