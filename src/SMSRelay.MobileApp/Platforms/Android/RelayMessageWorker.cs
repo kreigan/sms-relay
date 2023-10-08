@@ -29,17 +29,17 @@ public class RelayMessageWorker : Worker
             return Result.InvokeFailure();
         }
 
-        ReceivedMessage receivedMessage;
+        TextMessage receivedMessage;
         try
         {
-            receivedMessage = JsonSerializer.Deserialize<ReceivedMessage>(receivedMessageJson)!;
+            receivedMessage = JsonSerializer.Deserialize<TextMessage>(receivedMessageJson)!;
         }
         catch (Exception)
         {
             return Result.InvokeFailure();
         }
 
-        RelayedMessage relayedMessage;
+        ReceivedMessage relayedMessage;
         try
         {
             relayedMessage = Relay(receivedMessage);
@@ -56,7 +56,7 @@ public class RelayMessageWorker : Worker
             );
     }
 
-    private static RelayedMessage Relay(ReceivedMessage message)
+    private static ReceivedMessage Relay(TextMessage message)
     {
         IRelayService relayService = new RelayService(new SettingsService());
         return relayService.Relay(message);

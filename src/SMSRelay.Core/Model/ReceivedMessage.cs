@@ -1,6 +1,6 @@
 ﻿namespace SMSRelay.Core.Model;
 
-public record RelayedMessage
+public record ReceivedMessage
     (
     Guid Id,
     string Sender,

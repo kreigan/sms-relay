@@ -1,6 +1,6 @@
 ﻿namespace SMSRelay.MobileApp.Model;
 
-public record ReceivedMessage
+public record TextMessage
     (
     Guid Id,
     int SimSlotIndex,

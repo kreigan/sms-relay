@@ -13,7 +13,7 @@ public class RelayService : IRelayService
         _settingsService = settingsService;
     }
 
-    public RelayedMessage Relay(ReceivedMessage receivedMessage)
+    public ReceivedMessage Relay(TextMessage receivedMessage)
     {
         throw new NotImplementedException();
     }

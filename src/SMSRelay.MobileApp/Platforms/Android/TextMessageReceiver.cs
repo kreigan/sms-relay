@@ -34,7 +34,7 @@ public class TextMessageReceiver : BroadcastReceiver
             return;
         }
 
-        ReceivedMessage receivedMessage = new
+        TextMessage receivedMessage = new
         (
             Id: Guid.NewGuid(),
             SimSlotIndex: intent.GetIntExtra(SlotIndexExtraName, 0),

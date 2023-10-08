@@ -4,10 +4,10 @@ namespace SMSRelay.MobileApp.ViewModels;
 
 public class MessageLogViewModel
 {
-    private readonly ICollection<RelayedMessage> _messages;
+    private readonly ICollection<ReceivedMessage> _messages;
 
     public MessageLogViewModel()
     {
-        _messages = new List<RelayedMessage>();
+        _messages = new List<ReceivedMessage>();
     }
 }

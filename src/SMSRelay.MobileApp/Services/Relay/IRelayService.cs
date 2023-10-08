@@ -5,5 +5,5 @@ namespace SMSRelay.MobileApp.Services.Relay;
 
 public interface IRelayService
 {
-    RelayedMessage Relay(ReceivedMessage receivedMessage);
+    ReceivedMessage Relay(TextMessage receivedMessage);
 }
