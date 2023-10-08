@@ -1,0 +1,13 @@
+POST http://localhost:7153/api/relay
+Content-Type: application/json
+Accept-Language: en-US,en;q=0.5
+
+{
+    "id" : "c9da3b12-6018-4bbc-821d-2436a9c95d22",
+    "sender" : "SMS sender",
+    "recipientPhoneNumber" : "+1 555 878 9494",
+    "body" : "I am watching you",
+    "receivedAt" : "2023-10-05T02:54:38.91Z"
+}
+
+###
