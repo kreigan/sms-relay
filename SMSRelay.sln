@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMSRelay.Core", "src\SMSRel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMSRelay.MobileApp", "src\SMSRelay.MobileApp\SMSRelay.MobileApp.csproj", "{9BD14569-9838-4E8C-B1DC-CDE6A1948319}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMSRelay.Functions", "src\SMSRelay.Functions\SMSRelay.Functions.csproj", "{1DAE00D5-3A47-4B0A-9C6C-B707A59991DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9BD14569-9838-4E8C-B1DC-CDE6A1948319}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BD14569-9838-4E8C-B1DC-CDE6A1948319}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9BD14569-9838-4E8C-B1DC-CDE6A1948319}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1DAE00D5-3A47-4B0A-9C6C-B707A59991DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DAE00D5-3A47-4B0A-9C6C-B707A59991DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DAE00D5-3A47-4B0A-9C6C-B707A59991DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DAE00D5-3A47-4B0A-9C6C-B707A59991DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +53,7 @@ Global
 		{FD61E5D2-69C7-456C-BE34-EF1BF8A7C704} = {3BE59ABE-475B-41DD-A4B6-D1A4EE0C328D}
 		{1F25F68D-F0DA-48BC-A21F-11064B0DC275} = {3BE59ABE-475B-41DD-A4B6-D1A4EE0C328D}
 		{9BD14569-9838-4E8C-B1DC-CDE6A1948319} = {3BE59ABE-475B-41DD-A4B6-D1A4EE0C328D}
+		{1DAE00D5-3A47-4B0A-9C6C-B707A59991DE} = {3BE59ABE-475B-41DD-A4B6-D1A4EE0C328D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A5D09AF3-A8B7-4E30-AEE4-18E6824BFB7D}

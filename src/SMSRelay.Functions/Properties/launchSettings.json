@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SMSRelay.Functions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7153 --verbose"
+    }
+  }
+}
