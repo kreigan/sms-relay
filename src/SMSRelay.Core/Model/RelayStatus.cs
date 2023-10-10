@@ -1,4 +1,4 @@
-﻿namespace SMSRelay.Functions.Model;
+﻿namespace SMSRelay.Core.Model;
 
 public enum RelayStatus
 {

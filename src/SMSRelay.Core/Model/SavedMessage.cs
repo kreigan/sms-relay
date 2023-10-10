@@ -2,9 +2,9 @@
 
 using Newtonsoft.Json;
 
-namespace SMSRelay.Functions.Model;
+namespace SMSRelay.Core.Model;
 
-public record class RelayedMessage
+public record class SavedMessage
 {
     [JsonProperty("id")]
     [JsonPropertyName("id")]

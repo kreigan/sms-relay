@@ -2,7 +2,7 @@
 
 using Newtonsoft.Json;
 
-namespace SMSRelay.Functions.Model;
+namespace SMSRelay.Forwarder.Model;
 
 public record class Account
 {

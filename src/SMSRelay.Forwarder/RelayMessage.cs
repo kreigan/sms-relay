@@ -2,9 +2,9 @@
 using Microsoft.Extensions.Logging;
 
 using SMSRelay.Core;
-using SMSRelay.Functions.Model;
+using SMSRelay.Core.Model;
 
-namespace SMSRelay.Functions;
+namespace SMSRelay.Forwarder;
 
 public class RelayMessage
 {
@@ -20,7 +20,7 @@ public class RelayMessage
         databaseName: "smsrelay",
         containerName: "messages",
         Connection = Constants.AppParamDbConnection,
-        CreateLeaseContainerIfNotExists = true)] IReadOnlyList<RelayedMessage> messages,
+        CreateLeaseContainerIfNotExists = true)] IReadOnlyList<SavedMessage> messages,
     FunctionContext functionContext)
     {
         var messagesToRelay = messages.Where(m => m.Status == RelayStatus.NotRelayed).ToList();
