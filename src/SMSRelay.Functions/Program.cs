@@ -5,7 +5,7 @@ using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-using SMSRelay.Functions;
+using SMSRelay.Core;
 
 var host = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults()

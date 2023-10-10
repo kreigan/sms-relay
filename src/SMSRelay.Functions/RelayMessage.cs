@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 
+using SMSRelay.Core;
 using SMSRelay.Functions.Model;
 
 namespace SMSRelay.Functions;

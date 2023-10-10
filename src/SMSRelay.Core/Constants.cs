@@ -1,4 +1,4 @@
-﻿namespace SMSRelay.Functions;
+﻿namespace SMSRelay.Core;
 
 public static class Constants
 {
