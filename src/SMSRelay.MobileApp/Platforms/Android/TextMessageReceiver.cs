@@ -39,18 +39,20 @@ public class TextMessageReceiver : BroadcastReceiver
             Id: Guid.NewGuid(),
             SimSlotIndex: intent.GetIntExtra(SlotIndexExtraName, 0),
             ReceivedAt: registrationTime,
-            MessageBody: messageParts.FirstOrDefault(x => x.DisplayOriginatingAddress != null)?.DisplayOriginatingAddress ?? string.Empty,
-            Sender: string.Concat(messageParts.Select(x => x.MessageBody))
+            Sender: messageParts.FirstOrDefault(x => x.DisplayOriginatingAddress != null)?.DisplayOriginatingAddress ?? string.Empty,
+            MessageBody: string.Concat(messageParts.Select(x => x.MessageBody))
         );
 
         Data relayData = new Data.Builder()
             .PutString(RelayMessageWorker.ReceivedMessageDataKey, JsonSerializer.Serialize(receivedMessage))
             .Build();
 
+#pragma warning disable CS8604 // Possible null reference argument.
         WorkRequest relayRequest = OneTimeWorkRequest.Builder.From<RelayMessageWorker>()
-            .SetExpedited(OutOfQuotaPolicy.RunAsNonExpeditedWorkRequest!)
+            .SetExpedited(OutOfQuotaPolicy.RunAsNonExpeditedWorkRequest)
             .SetInputData(relayData)
             .Build();
+#pragma warning restore CS8604 // Possible null reference argument.
 
         WorkManager.GetInstance(context).Enqueue(relayRequest);
     }

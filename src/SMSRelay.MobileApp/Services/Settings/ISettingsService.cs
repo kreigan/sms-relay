@@ -1,6 +1,4 @@
-﻿using SMSRelay.MobileApp.Model;
-
-namespace SMSRelay.MobileApp.Services.Settings;
+﻿namespace SMSRelay.MobileApp.Services.Settings;
 
 public interface ISettingsService
 {
@@ -19,4 +17,6 @@ public interface ISettingsService
     bool Sim2Active { get; set; }
 
     string Sim2PhoneNumber { get; set; }
+
+    (string number, bool isActive) GetSimProperties(int simSlotIndex);
 }

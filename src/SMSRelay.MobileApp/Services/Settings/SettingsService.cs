@@ -1,6 +1,4 @@
-﻿using SMSRelay.MobileApp.Model;
-
-namespace SMSRelay.MobileApp.Services.Settings;
+﻿namespace SMSRelay.MobileApp.Services.Settings;
 
 public class SettingsService : ISettingsService
 {
@@ -59,4 +57,11 @@ public class SettingsService : ISettingsService
         get => Preferences.Get(Sim_2_PhoneNumber, string.Empty);
         set => Preferences.Set(Sim_2_PhoneNumber, value);
     }
+
+    public (string number, bool isActive) GetSimProperties(int simSlotIndex) => simSlotIndex switch
+    {
+        0 => (Sim1PhoneNumber, Sim1Active),
+        1 => (Sim2PhoneNumber, Sim2Active),
+        _ => throw new ArgumentOutOfRangeException($"Sim slot index must be 0 or 1, but {simSlotIndex} was given")
+    };
 }

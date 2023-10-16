@@ -1,4 +1,6 @@
-﻿using Android.Content;
+﻿using System.Text.Json;
+
+using Android.Content;
 
 using AndroidX.Work;
 
@@ -7,58 +9,92 @@ using SMSRelay.MobileApp.Model;
 using SMSRelay.MobileApp.Services.Relay;
 using SMSRelay.MobileApp.Services.Settings;
 
-using System.Text.Json;
-
 namespace SMSRelay.MobileApp.Platforms.Android;
 
 public class RelayMessageWorker : Worker
 {
     public const string ReceivedMessageDataKey = "received_message";
-    
+
     public const string RelayMessageDataKey = "relay_message";
+
+    private readonly ISettingsService _settingsService;
+    private readonly IRelayService _relayService;
 
     public RelayMessageWorker(Context context, WorkerParameters workerParams) : base(context, workerParams)
     {
+        _settingsService = new SettingsService();
+        _relayService = new RelayService(_settingsService);
     }
 
     public override Result DoWork()
     {
-        string? receivedMessageJson = InputData.GetString(ReceivedMessageDataKey);
-        if (receivedMessageJson == null)
+        if (!TryGetMessageFromInput(ReceivedMessageDataKey, out TextMessage? receivedMessage) || receivedMessage == null)
         {
             return Result.InvokeFailure();
         }
 
-        TextMessage receivedMessage;
+        if (!TryGetSimProperties(receivedMessage.SimSlotIndex, out string phoneNumber))
+        {
+            return Result.InvokeSuccess();
+        }
+
+        if (string.IsNullOrWhiteSpace(phoneNumber))
+        {
+            return Result.InvokeFailure();
+        }
+
+        ReceivedMessage messageToRelay = new(
+            Id: receivedMessage.Id,
+            Sender: receivedMessage.Sender,
+            RecipientPhoneNumber: phoneNumber,
+            Body: receivedMessage.MessageBody,
+            ReceivedAt: receivedMessage.ReceivedAt);
+
+        return Relay(messageToRelay) ? Result.InvokeSuccess() : Result.InvokeFailure();
+    }
+
+    private bool TryGetMessageFromInput(string key, out TextMessage? receivedMessage)
+    {
+        receivedMessage = null;
+
+        string? receivedMessageJson = InputData.GetString(key);
+        if (receivedMessageJson == null)
+            return false;
+
         try
         {
             receivedMessage = JsonSerializer.Deserialize<TextMessage>(receivedMessageJson)!;
+            return true;
         }
         catch (Exception)
         {
-            return Result.InvokeFailure();
+            return false;
         }
-
-        ReceivedMessage relayedMessage;
-        try
-        {
-            relayedMessage = Relay(receivedMessage);
-        }
-        catch (Exception)
-        {
-            return Result.InvokeRetry();
-        }
-
-        return Result.InvokeSuccess(
-                new Data.Builder()
-                    .PutString(RelayMessageDataKey, JsonSerializer.Serialize(relayedMessage))
-                    .Build()
-            );
     }
 
-    private static ReceivedMessage Relay(TextMessage message)
+    private bool TryGetSimProperties(int simSlotIndex, out string phoneNumber)
     {
-        IRelayService relayService = new RelayService(new SettingsService());
-        return relayService.Relay(message);
+        phoneNumber = string.Empty;
+        try
+        {
+            (phoneNumber, bool isActive) = _settingsService.GetSimProperties(simSlotIndex);
+            return isActive;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            return false;
+        }
+    }
+    
+    private bool Relay(ReceivedMessage message)
+    {
+        try
+        {
+            return _relayService.RelayAsync(message, new CancellationToken()).Result;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
     }
 }
